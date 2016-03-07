@@ -35,4 +35,46 @@ public class ShowTrackerLoginService : IShowTrackerLoginService
 
         return result;
     }
+
+    public int AddShow(NewShow ns)
+    {
+        Show show = new Show();
+        ShowDetail showDetail = new ShowDetail();
+
+        show.ShowName = ns.ShowName;
+        show.ShowDate = DateTime.Now;
+        show.ShowDate = DateTime.Parse(ns.ShowDate);
+        show.ShowTime = TimeSpan.Parse(ns.ShowTime);
+        show.ShowTicketInfo = ns.ShowTicketInfo;
+        show.ShowDateEntered = DateTime.Now;
+
+        showDetail.Show = show;
+        showDetail.ShowKey = int.Parse(ns.ShowKey);
+        showDetail.ArtistKey = int.Parse(ns.ArtistKey);
+        showDetail.ShowDetailAdditional = ns.ShowDetailAdditional;
+
+
+        db.Shows.Add(show);
+        db.SaveChanges();
+
+        return 0;
+        }
+    
+ 
+
+    public int AddArtist(NewArtist na)
+    {
+        
+        Artist a = new Artist();
+        a.ArtistName = na.ArtistName;
+        a.ArtistEmail = na.ArtistEmail;
+        db.Artists.Add(a);
+        db.SaveChanges();
+
+        return 0;
+        
+    }
+   
+
+
 }

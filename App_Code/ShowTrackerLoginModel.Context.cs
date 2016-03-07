@@ -27,6 +27,12 @@ public partial class ShowTrackerEntities : DbContext
 
     public virtual DbSet<Venue> Venues { get; set; }
     public virtual DbSet<VenueLogin> VenueLogins { get; set; }
+    public virtual DbSet<Artist> Artists { get; set; }
+    public virtual DbSet<Fan> Fans { get; set; }
+    public virtual DbSet<FanLogin> FanLogins { get; set; }
+    public virtual DbSet<LoginHistory> LoginHistories { get; set; }
+    public virtual DbSet<Show> Shows { get; set; }
+    public virtual DbSet<ShowDetail> ShowDetails { get; set; }
 
     public virtual int usp_RegisterVenue(string venueName, string venueAddress, string venueCity, string venueState, string venueZipCode, string venuePhone, string venueEmail, string venueWebPage, Nullable<int> venueAgeRestriction, string venueLoginUserName, string venueLoginPasswordPlain)
     {

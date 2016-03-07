@@ -8,6 +8,17 @@
         <EntityTypeShape EntityType="ShowTrackerLoginModel.Venue" Width="2.125" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="ShowTrackerLoginModel.VenueLogin" Width="2.625" PointX="3.75" PointY="1.375" IsExpanded="true" />
         <AssociationConnector Association="ShowTrackerLoginModel.FK__VenueLogi__Venue__31EC6D26" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ShowTrackerLoginModel.Artist" Width="1.5" PointX="4" PointY="9.625" />
+        <EntityTypeShape EntityType="ShowTrackerLoginModel.Fan" Width="1.5" PointX="6.25" PointY="9.625" />
+        <EntityTypeShape EntityType="ShowTrackerLoginModel.FanLogin" Width="1.5" PointX="8.5" PointY="9.5" />
+        <EntityTypeShape EntityType="ShowTrackerLoginModel.LoginHistory" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="ShowTrackerLoginModel.Show" Width="1.5" PointX="4" PointY="5.375" />
+        <EntityTypeShape EntityType="ShowTrackerLoginModel.ShowDetail" Width="1.5" PointX="6.25" PointY="5.625" />
+        <AssociationConnector Association="ShowTrackerLoginModel.FK__ShowDetai__Artis__300424B4" />
+        <AssociationConnector Association="ShowTrackerLoginModel.FK__FanLogin__FanKey__2E1BDC42" />
+        <AssociationConnector Association="ShowTrackerLoginModel.FK__Show__VenueKey__2F10007B" />
+        <AssociationConnector Association="ShowTrackerLoginModel.FK__ShowDetai__ShowK__30F848ED" />
+        <AssociationConnector Association="ShowTrackerLoginModel.FanArtist" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
