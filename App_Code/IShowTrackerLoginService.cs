@@ -16,10 +16,36 @@ public interface IShowTrackerLoginService
     int VenueRegistration(VenueLite r);
 
     [OperationContract]
-    int AddShow(NewShow ns);
+    int AddShow(ShowLite sl);
 
     [OperationContract]
-    int AddArtist(NewArtist aa);
+    int AddArtist(ArtistLite al);
+
+    [OperationContract]
+    int AddShowDetails(ShowDetailsLite sdl);
+
+    [OperationContract]
+    int FanLogin(string password, string username);
+
+    [OperationContract]
+    int FanRegistration(FanLite r);
+
+
+
+    [OperationContract]
+    List<string> GetArtists();
+
+    [OperationContract]
+    List<string> GetVenue();
+
+    [OperationContract]
+    List<string> GetShow();
+
+    [OperationContract]
+    List<VenueShow> GetShowsByVenue(string venueName);
+
+    [OperationContract]
+    List<ArtistShows> GetShowsByArtist(string artistName);
 
 
 }
@@ -63,55 +89,118 @@ public class VenueLite
 
 }
 
-[DataContract]
-public class NewShow
+
+
+public class FanLite
 {
     [DataMember]
-    public string ShowKey { set; get; }
+    public string FanName { set; get; }
 
     [DataMember]
-    public string ShowName { set; get; }
+    public string FanEmail { set; get; }
 
     [DataMember]
-    public string VenueKey { set; get; }
+    public string FanLoginUserName { set; get; }
 
     [DataMember]
-    public string ShowDate { set; get; }
-
-    [DataMember]
-    public string ShowTime { set; get; }
-
-    [DataMember]
-    public string ShowTicketInfo { set; get; }
-
-    [DataMember]
-    public string ShowDateEntered { set; get; }
-
-    [DataMember]
-    public List<string> Shows
-    { set; get; }
-
-    [DataMember]
-    public string ArtistKey { set; get; }
-
-    [DataMember]
-    public string ShowDetailAdditional { set; get; }
-    [DataMember]
-    public List<string> Artists
-    { set; get; }
+    public string FanLoginPasswordPlain { set; get; }
 
 
 
 }
 
-[DataContract]
-public class NewArtist {
 
+
+[DataContract]
+public class ShowLite
+{
+    [DataMember]
+    public string ShowName { set; get; }
+
+    [DataMember]
+    public DateTime ShowDate { set; get; }
+
+    [DataMember]
+    public TimeSpan ShowTime { set; get; }
+
+    [DataMember]
+    public string ShowTicket { set; get; }
+
+    [DataMember]
+    public int VenueKey { set; get; }
+
+}
+
+[DataContract]
+public class ShowDetailsLite
+{
+    
+    [DataMember]
+    public List<string> ArtistNames
+    { set; get; }
+
+    [DataMember]
+    public int ArtistKey { set; get; }
+
+    [DataMember]
+    public TimeSpan ShowDetailArtistStartTime { set; get; }
+
+    [DataMember]
+    public string ShowDetailAdditional { set; get; }
+
+    [DataMember]
+    public int ShowKey { set; get; }
+
+    [DataMember]
+    public string ShowName { set; get; }
+
+}
+
+
+
+[DataContract]
+public class ArtistLite
+{
     [DataMember]
     public string ArtistName { set; get; }
 
     [DataMember]
     public string ArtistEmail { set; get; }
+
+    [DataMember]
+    public string ArtistWebPage { set; get; }
+
+
+}
+
+[DataContract]
+public class VenueShow
+{
+    [DataMember]
+    public string Name { set; get; }
+
+    [DataMember]
+    public string Date { set; get; }
+
+    [DataMember]
+    public string Time { set; get; }
+
+}
+
+[DataContract]
+public class ArtistShows
+{
+    [DataMember]
+    public string Name { set; get; }
+
+    [DataMember]
+    public string Date { set; get; }
+
+    [DataMember]
+    public string Time { set; get; }
+
+    [DataMember]
+    public string Venue { set; get; }
 
 }
 

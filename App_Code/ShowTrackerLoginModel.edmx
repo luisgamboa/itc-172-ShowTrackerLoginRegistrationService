@@ -186,6 +186,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="usp_FanLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+          <Parameter Name="password" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_RegisterFan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FanName" Type="nvarchar" Mode="In" />
+          <Parameter Name="FanEmail" Type="nvarchar" Mode="In" />
+          <Parameter Name="FanUsername" Type="nvarchar" Mode="In" />
+          <Parameter Name="fanPassword" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="usp_RegisterVenue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="VenueName" Type="nvarchar" Mode="In" />
           <Parameter Name="VenueAddress" Type="nvarchar" Mode="In" />
@@ -339,6 +349,16 @@
             <End Role="Artist" EntitySet="Artists" />
             <End Role="Fan" EntitySet="Fans" />
           </AssociationSet>
+          <FunctionImport Name="usp_FanLogin">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_RegisterFan">
+            <Parameter Name="FanName" Mode="In" Type="String" />
+            <Parameter Name="FanEmail" Mode="In" Type="String" />
+            <Parameter Name="FanUsername" Mode="In" Type="String" />
+            <Parameter Name="fanPassword" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Artist">
           <Key>
@@ -575,6 +595,8 @@
               <ScalarProperty Name="ArtistKey" ColumnName="ArtistKey" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="usp_FanLogin" FunctionName="ShowTrackerLoginModel.Store.usp_FanLogin" />
+          <FunctionImportMapping FunctionImportName="usp_RegisterFan" FunctionName="ShowTrackerLoginModel.Store.usp_RegisterFan" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

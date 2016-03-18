@@ -95,4 +95,38 @@ public partial class ShowTrackerEntities : DbContext
 
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_venueLogin", usernameParameter, passwordParameter);
     }
+
+    public virtual int usp_FanLogin(string username, string password)
+    {
+        var usernameParameter = username != null ?
+            new ObjectParameter("username", username) :
+            new ObjectParameter("username", typeof(string));
+
+        var passwordParameter = password != null ?
+            new ObjectParameter("password", password) :
+            new ObjectParameter("password", typeof(string));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_FanLogin", usernameParameter, passwordParameter);
+    }
+
+    public virtual int usp_RegisterFan(string fanName, string fanEmail, string fanUsername, string fanPassword)
+    {
+        var fanNameParameter = fanName != null ?
+            new ObjectParameter("FanName", fanName) :
+            new ObjectParameter("FanName", typeof(string));
+
+        var fanEmailParameter = fanEmail != null ?
+            new ObjectParameter("FanEmail", fanEmail) :
+            new ObjectParameter("FanEmail", typeof(string));
+
+        var fanUsernameParameter = fanUsername != null ?
+            new ObjectParameter("FanUsername", fanUsername) :
+            new ObjectParameter("FanUsername", typeof(string));
+
+        var fanPasswordParameter = fanPassword != null ?
+            new ObjectParameter("fanPassword", fanPassword) :
+            new ObjectParameter("fanPassword", typeof(string));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_RegisterFan", fanNameParameter, fanEmailParameter, fanUsernameParameter, fanPasswordParameter);
+    }
 }
